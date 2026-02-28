@@ -140,7 +140,7 @@ body {
   margin-top: 40px;
 }
 
-/* Big title like the mock */
+/* Big title  */
 .hero__title {
   margin: 0;
   font-family: var(--font-display);
@@ -160,7 +160,7 @@ body {
   opacity: 0.9;
 }
 
-/* CTA (Shop All) placed low-ish under the title, slightly left */
+/* shop all button */
 .hero__cta {
   position: absolute;
   left: 50%;
