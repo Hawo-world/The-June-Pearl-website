@@ -15,68 +15,47 @@ body {
 body {
   margin: 0;
   color: #111;
-  background: #f6f3ee; 
+
+  /* NEW BACKGROUND IMAGE */
+  background-image: url("./assets/landing-page.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   overflow-x: hidden;
 }
 
-/* =========================
-   Fonts (drop-in later)
-   - Put your font files in: assets/fonts/
-   - Then uncomment these @font-face blocks and update filenames.
-========================= */
-
-/*
-@font-face {
-  font-family: "TAN Pearl";
-  src: url("./assets/fonts/TAN-Pearl.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hello Paris Script";
-  src: url("./assets/fonts/HelloParisScript.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-*/
-
-/* not done, adding fonts later */
-:root {
-  --font-display: "TAN Pearl", "Didot", "Bodoni MT", "Playfair Display", serif;
-  --font-script: "Hello Paris Script", "Allura", "Parisienne", "Brush Script MT",
-    cursive;
-
-  --container-pad: clamp(16px, 3vw, 40px);
-  --nav-gap: clamp(12px, 2vw, 22px);
+/* Optional: subtle fallback color while image loads */
+body {
+  background-color: #f6f3ee;
 }
 
 /* =========================
-   Header
+   Header (nav stays top-right)
 ========================= */
 .site-header {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px var(--container-pad);
+
+  padding: 22px clamp(16px, 3vw, 40px);
 }
 
-.brand {
-  font-family: var(--font-display);
-  font-size: 20px;
-  letter-spacing: 0.02em;
-  text-decoration: none;
-  color: inherit;
+.header-spacer {
+  width: 1px; /* keeps layout without showing anything */
+  height: 1px;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: var(--nav-gap);
+  gap: clamp(12px, 2vw, 22px);
 }
 
 .nav__link {
@@ -98,78 +77,26 @@ body {
 }
 
 /* =========================
-   Hero Layout
+   Hero (button placement)
 ========================= */
 .hero {
   position: relative;
-  min-height: calc(100vh - 76px);
-  padding: 0 var(--container-pad);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 100vh;
 }
 
-/* Center tag image */
-.hero__tag {
-  position: absolute;
-  top: 44%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(320px, 55vw);
-  max-width: 360px;
-  pointer-events: none;
-  user-select: none;
-}
-
-.hero__tag-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: contrast(1.05);
-}
-
-/* Title + script */
-.hero__type {
-  position: relative;
-  width: 100%;
-  max-width: 1100px;
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: clamp(14px, 3vw, 40px);
-  margin-top: 40px;
-}
-
-/* Big title  */
-.hero__title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(52px, 8vw, 96px);
-  letter-spacing: 0.02em;
-  line-height: 0.95;
-}
-
-/* Script word to the right of title */
-.hero__script {
-  font-family: var(--font-script);
-  font-weight: 400;
-  font-size: clamp(28px, 4vw, 56px);
-  letter-spacing: 0.01em;
-  transform: translateY(10px); /* nudges it down like your screenshot */
-  opacity: 0.9;
-}
-
-/* shop all button */
+/* CTA placed like before: lower area, slightly left */
 .hero__cta {
   position: absolute;
   left: 50%;
   bottom: 18vh;
   transform: translateX(-50%);
+
   width: 100%;
   max-width: 1100px;
+
   display: flex;
   justify-content: flex-start;
+
   padding-left: clamp(0px, 8vw, 120px);
 }
 
@@ -177,11 +104,13 @@ body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   font-size: 14px;
   letter-spacing: 0.06em;
-  text-transform: none;
+
   color: #111;
   text-decoration: none;
+
   padding: 10px 2px;
   border-bottom: 1px solid rgba(17, 17, 17, 0.4);
+
   display: inline-block;
   transition: border-color 160ms ease, transform 160ms ease;
 }
@@ -192,7 +121,7 @@ body {
 }
 
 /* =========================
-   Sections (placeholders)
+   Placeholder sections
 ========================= */
 .section {
   min-height: 10px;
@@ -202,17 +131,6 @@ body {
    Responsive tweaks
 ========================= */
 @media (max-width: 720px) {
-  .hero__type {
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    margin-top: 60px;
-  }
-
-  .hero__script {
-    transform: none;
-  }
-
   .hero__cta {
     bottom: 14vh;
     justify-content: center;
